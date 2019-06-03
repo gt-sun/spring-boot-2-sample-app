@@ -3,7 +3,7 @@ FROM java:8-jre-alpine
 EXPOSE 8080
 
 RUN mkdir /app
-COPY target/*.jar /app/spring-boot-application.jar
+COPY target/spring-boot-sample-actuator-2.0.2.jar /app/spring-boot-application.jar
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
 
