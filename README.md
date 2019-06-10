@@ -1,3 +1,9 @@
+
+## for TeamCity test
+
+1. branch: master
+
+
 # Dockerized Spring boot 2 application
 
 ![Docker plus Spring Boot plus Codefresh](docker-spring-boot-codefresh.jpg)
