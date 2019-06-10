@@ -71,6 +71,7 @@ object Jboss : BuildType({
             scriptContent = """
                 pwd
                 ls -al
+                echo add from VCS settings.kts
                 bin/jboss-cli.sh -c --controller=cnjbossqa01.mmm.com:9990 -u=%env.cnjbossqa01_user% -p=%env.cnjbossqa01_pwd% --command="deployment-info"
             """.trimIndent()
         }
