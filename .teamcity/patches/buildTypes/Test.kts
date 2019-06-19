@@ -31,11 +31,11 @@ changeBuildType(RelativeId("Test")) {
             scriptContent = """
                 declare -i users_lists
                 i=0
-                for u in ${'$'}{admin_users};
+                for u in ${'$'}{admin_users}
                 do
-                  echo ${'$'}u;
-                  users_lists[${'$'}i]=${'$'}u;
-                  i=${'$'}((i+1))；
+                  echo ${'$'}u
+                  users_lists[${'$'}i]=${'$'}u
+                  i=${'$'}((i+1))
                 done
                 echo ${'$'}{users_lists[@]}
                 echo ${'$'}{#users_lists[@]}
