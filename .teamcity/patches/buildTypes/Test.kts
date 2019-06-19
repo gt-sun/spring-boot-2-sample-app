@@ -26,9 +26,17 @@ changeBuildType(RelativeId("Test")) {
     steps {
         update<ScriptBuildStep>(0) {
             scriptContent = """
-                echo %teamcity.build.triggeredBy%
                 echo %env.admin_users%
                 echo ${'$'}{admin_users}
+                
+                for i in ${'$'}{admin_users[@]};
+                do 
+                  echo ${'$'}i;
+                  if [ "%teamcity.build.triggeredBy.username%" == ${'$'}i ];then 
+                    echo ok;
+                    break;
+                  fi;
+                done
             """.trimIndent()
         }
         insert(1) {
