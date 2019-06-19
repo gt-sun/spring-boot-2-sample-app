@@ -29,16 +29,9 @@ changeBuildType(RelativeId("Test")) {
     steps {
         update<ScriptBuildStep>(0) {
             scriptContent = """
-                declare -i users_lists
-                i=0
-                for u in ${'$'}{admin_users}
-                do
-                  echo ${'$'}u
-                  users_lists[${'$'}i]=${'$'}u
-                  i=${'$'}((i+1))
-                done
-                echo ${'$'}{users_lists[@]}
-                echo ${'$'}{#users_lists[@]}
+                users_list=(%env.admin_users%)
+                echo ${'$'}{users_list[@]}
+                echo ${'$'}{#users_list[@]}
             """.trimIndent()
         }
     }
