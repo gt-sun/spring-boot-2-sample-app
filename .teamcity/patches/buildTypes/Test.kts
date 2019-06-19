@@ -36,7 +36,6 @@ changeBuildType(RelativeId("Test")) {
                 
                 for i in ${'$'}{admin_users[@]}
                 do 
-                  echo ${'$'}i
                   if [ "%teamcity.build.triggeredBy.username%" == ${'$'}i ];then 
                     echo permission check pass ^_^
                     break
