@@ -15,6 +15,9 @@ changeBuildType(RelativeId("Test")) {
         add {
             param("env.admin_users", "aa bb cc a9k47zz")
         }
+        add {
+            param("env.cnjbossprod01_user", "carl2222")
+        }
     }
 
     expectSteps {
