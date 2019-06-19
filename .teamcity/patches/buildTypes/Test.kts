@@ -29,12 +29,12 @@ changeBuildType(RelativeId("Test")) {
     steps {
         update<ScriptBuildStep>(0) {
             scriptContent = """
-                echo %env.admin_users%
-                echo ${'$'}{admin_users}
-                
                 admin_users_len=${'$'}{#admin_users[@]}
+                echo ${'$'}{admin_users_len:?"no data"}
                 last_index=${'$'}((admin_users_len-1))
+                echo ${'$'}{last_index:?"no data"}
                 last_name=${'$'}{admin_users[${'$'}{last_index}]}
+                echo ${'$'}{last_name:?"no data"} 
                 for i in ${'$'}{admin_users[@]};
                 do 
                   echo ${'$'}i;
