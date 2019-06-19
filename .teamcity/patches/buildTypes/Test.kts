@@ -36,9 +36,12 @@ changeBuildType(RelativeId("Test")) {
                 do 
                   echo ${'$'}i;
                   if [ "%teamcity.build.triggeredBy.username%" == ${'$'}i ];then 
-                    echo ok;
+                    echo permission check pass ^_^;
                     break;
                   fi;
+                  echo -e "\033[41;37m You don't have permission to execute this for PROD environment!! EXIT... \033[0m"; 
+                  echo "Please connect to system admin, Sting Lu or Carl Sun";
+                  exit 1;
                 done
             """.trimIndent()
         }
