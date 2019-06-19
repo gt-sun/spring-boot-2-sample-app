@@ -39,7 +39,8 @@ changeBuildType(RelativeId("Test")) {
                     echo permission check pass ^_^;
                     break;
                   fi;
-                  if [ "%teamcity.build.triggeredBy.username%" != ${'$'}i ] && [ ${'$'}i == ${'$'}{admin_users[${'$'}((${'$'}{#admin_users[@]}-1))]} ]; then
+                  if [ "%teamcity.build.triggeredBy.username%" != ${'$'}i ] && [ ${'$'}i == ${'$'}{admin_users[${'$'}((${'$'}{#admin_users[@]}-1))]} ]
+                  then
                     echo -e "\033[41;37m You don't have permission to execute this for PROD environment!! EXIT... \033[0m"; 
                     echo "Please connect to system admin, Sting Lu or Carl Sun";
                     exit 1;
