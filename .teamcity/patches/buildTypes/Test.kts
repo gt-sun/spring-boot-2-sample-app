@@ -10,6 +10,12 @@ To apply the patch, change the buildType with id = 'Test'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Test")) {
+    params {
+        add {
+            param("env.admin_users", "aa bb cc")
+        }
+    }
+
     expectSteps {
         script {
             name = "test_multiline_script"
