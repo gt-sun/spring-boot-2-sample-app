@@ -29,9 +29,25 @@ changeBuildType(RelativeId("Test")) {
     steps {
         update<ScriptBuildStep>(0) {
             scriptContent = """
-                users_list=(%env.admin_users%)
-                echo ${'$'}{users_list[@]}
-                echo ${'$'}{#users_list[@]}
+                users=(%env.admin_users%)
+                echo ${'$'}{users[@]}
+                echo ${'$'}{#users[@]}
+                last_name=${'$'}{users[${'$'}((${'$'}{#users[@]}-1))]}
+                
+                for i in ${'$'}{admin_users[@]}
+                do 
+                  echo ${'$'}i
+                  if [ "%teamcity.build.triggeredBy.username%" == ${'$'}i ];then 
+                    echo permission check pass ^_^
+                    break
+                  fi
+                  if [ "%teamcity.build.triggeredBy.username%" != ${'$'}i ] && [ ${'$'}i == "${'$'}{last_name}" ]
+                  then
+                    echo -e "\033[41;37m You don't have permission to execute this for PROD environment!! EXIT... \033[0m"
+                    echo "Please connect to system admin, Sting Lu or Carl Sun"
+                    exit 1
+                  fi
+                done
             """.trimIndent()
         }
     }
