@@ -13,7 +13,7 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("Test")) {
     params {
         add {
-            param("env.admin_users", "aa bb cc")
+            param("env.admin_users", "aa bb cc a9k47zz")
         }
         add {
             param("env.cnjbossprod01_user", "carl2222")
