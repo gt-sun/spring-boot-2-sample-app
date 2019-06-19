@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
@@ -23,6 +24,13 @@ changeBuildType(RelativeId("Test")) {
         }
     }
     steps {
+        update<ScriptBuildStep>(0) {
+            scriptContent = """
+                echo %teamcity.build.triggeredBy%
+                echo %env.admin_users%
+                echo ${'$'}{admin_users}
+            """.trimIndent()
+        }
         insert(1) {
             script {
                 scriptContent = "ls"
