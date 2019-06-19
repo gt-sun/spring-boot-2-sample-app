@@ -42,10 +42,5 @@ changeBuildType(RelativeId("Test")) {
                 done
             """.trimIndent()
         }
-        insert(1) {
-            script {
-                scriptContent = "ls"
-            }
-        }
     }
 }
