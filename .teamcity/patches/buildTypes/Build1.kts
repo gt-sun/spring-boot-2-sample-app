@@ -26,7 +26,13 @@ changeBuildType(RelativeId("Build1")) {
                 scriptContent = """echo "test script""""
             }
         }
-        items.removeAt(1)
+        insert(1) {
+            script {
+                name = "build (1)"
+                scriptContent = """echo "build""""
+            }
+        }
+        items.removeAt(2)
     }
 
     expectDisabledSettings("RUNNER_6")
