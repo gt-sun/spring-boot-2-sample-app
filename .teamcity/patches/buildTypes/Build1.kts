@@ -23,5 +23,5 @@ changeBuildType(RelativeId("Build1")) {
     }
 
     expectDisabledSettings("RUNNER_6")
-    updateDisabledSettings("RUNNER_27", "RUNNER_28", "RUNNER_29", "RUNNER_6")
+    updateDisabledSettings("RUNNER_27", "RUNNER_28", "RUNNER_29", "RUNNER_31", "RUNNER_6")
 }
