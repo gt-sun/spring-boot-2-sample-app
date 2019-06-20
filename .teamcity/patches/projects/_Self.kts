@@ -10,6 +10,9 @@ To apply the patch, change the root project
 accordingly, and delete the patch script.
 */
 changeProject(DslContext.projectId) {
+    expectDefaultTemplate(AbsoluteId("CarlTest_BeforeScript"))
+    defaultTemplate = AbsoluteId("CarlTest_JbossQa")
+
     params {
         add {
             text("env.admin_users", "aa bb", readOnly = true, allowEmpty = false)
