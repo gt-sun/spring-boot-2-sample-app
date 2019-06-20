@@ -10,6 +10,12 @@ To apply the patch, change the buildType with id = 'Build1'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Build1")) {
+    params {
+        add {
+            param("env.pom_path", "pom.xml")
+        }
+    }
+
     expectSteps {
         maven {
             name = "mvnBuild"
