@@ -22,14 +22,14 @@ changeBuildType(RelativeId("Build1")) {
     steps {
         insert(0) {
             script {
-                name = "test"
-                scriptContent = """echo "test script""""
+                name = "build (1)"
+                scriptContent = """echo "build""""
             }
         }
         insert(1) {
             script {
-                name = "build (1)"
-                scriptContent = """echo "build""""
+                name = "test"
+                scriptContent = """echo "test script""""
             }
         }
         items.removeAt(2)
