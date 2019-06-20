@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -9,6 +10,19 @@ To apply the patch, change the buildType with id = 'Qa'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Qa")) {
+    expectSteps {
+        script {
+            scriptContent = """
+                pwd
+                ls -al
+                echo "Build Step qa"
+            """.trimIndent()
+        }
+    }
+    steps {
+        items.removeAt(0)
+    }
+
     expectDisabledSettings("RUNNER_6")
     updateDisabledSettings("RUNNER_26", "RUNNER_6")
 }
