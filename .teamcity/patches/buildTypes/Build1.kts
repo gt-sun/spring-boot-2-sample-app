@@ -1,8 +1,6 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.maven
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -11,22 +9,6 @@ To apply the patch, change the buildType with id = 'Build1'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Build1")) {
-    expectSteps {
-        maven {
-            name = "mvnBuild"
-            goals = "package"
-            mavenVersion = bundled_3_5()
-            userSettingsSelection = "settings.xml"
-        }
-    }
-    steps {
-        insert(1) {
-            script {
-                scriptContent = "cat README.md"
-            }
-        }
-    }
-
     expectDisabledSettings("RUNNER_6")
     updateDisabledSettings("RUNNER_27", "RUNNER_28", "RUNNER_6")
 }
