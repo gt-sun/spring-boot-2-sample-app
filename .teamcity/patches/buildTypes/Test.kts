@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
@@ -26,6 +27,9 @@ changeBuildType(RelativeId("Test")) {
         }
     }
     steps {
-        items.removeAt(0)
+        update<ScriptBuildStep>(0) {
+            name = ""
+            scriptContent = "date +%s"
+        }
     }
 }
