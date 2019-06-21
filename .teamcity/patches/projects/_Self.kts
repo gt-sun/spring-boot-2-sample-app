@@ -11,11 +11,14 @@ accordingly, and delete the patch script.
 */
 changeProject(DslContext.projectId) {
     expectDefaultTemplate(AbsoluteId("CarlTest_BeforeScript"))
-    defaultTemplate = AbsoluteId("CarlTest_JbossQa")
+    defaultTemplate = null
 
     params {
         add {
             text("env.admin_users", "aa bb", readOnly = true, allowEmpty = false)
         }
     }
+
+    expectBuildTypesOrder(RelativeId("Build1"), RelativeId("Qa"), RelativeId("Prod"))
+    buildTypesOrderIds = arrayListOf(RelativeId("Build1"))
 }
