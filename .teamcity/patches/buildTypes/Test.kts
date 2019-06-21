@@ -26,6 +26,21 @@ changeBuildType(RelativeId("Test")) {
         }
     }
     steps {
-        items.removeAt(0)
+        insert(0) {
+            step {
+                type = "ssh-exec-runner"
+                param("jetbrains.buildServer.deployer.username", "cnpcdevadmin")
+                param("jetbrains.buildServer.sshexec.command", """
+                    pwd
+                    cd /media/data1/app/gca-sso-proxy
+                    ls -al
+                    pwd
+                """.trimIndent())
+                param("teamcitySshKey", "id_rsa-cncicd01")
+                param("jetbrains.buildServer.deployer.targetUrl", "10.108.38.16")
+                param("jetbrains.buildServer.sshexec.authMethod", "UPLOADED_KEY")
+            }
+        }
+        items.removeAt(1)
     }
 }
