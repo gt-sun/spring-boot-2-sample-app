@@ -10,6 +10,11 @@ To apply the patch, change the buildType with id = 'Build1'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Build1")) {
+    check(allowExternalStatus == false) {
+        "Unexpected option value: allowExternalStatus = $allowExternalStatus"
+    }
+    allowExternalStatus = true
+
     params {
         add {
             param("env.pom_path", "pom.xml")
