@@ -21,14 +21,6 @@ changeBuildType(RelativeId("Build1")) {
         }
     }
 
-    vcs {
-
-        check(branchFilter == "+:*") {
-            "Unexpected option value: branchFilter = $branchFilter"
-        }
-        branchFilter = "+:master"
-    }
-
     expectSteps {
         maven {
             name = "mvnBuild"
